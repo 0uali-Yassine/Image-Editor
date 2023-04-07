@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Image Editor</title>
+    <style type="text/tailwindcss">
+        @layer utilities {
+          .font-family{
+            font-family: 'Schibsted Grotesk', sans-serif;
+          }
+          img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+          
+
+          .rang{
+            appearance: none;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+
+         .rang::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background-color: #6366f1;
+            border: 3px solid #ddd;
+            border-radius: 50%;
+            margin-top: -2px;
+        }
+
+        .rang::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background-color: #3f83f8;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            margin-top: -6px;
+        }
+        }
+      </style>
+</head>
+<body class="font-family bg-indigo-500 select-none">
+    <main class="w-[700px] h-[400px] p-[20px] m-auto mt-[50px] bg-white rounded-lg drop-shadow-lg max-[707px]:h-[632px] max-[707px]:w-[500px] max-[517px]:w-full">
+        <h1 class="text-[1.3rem] font-bold">EASY IMAGE EDITOR</h1>
+
+        <div class="setting w-[300px] p-[10px] rounded-md border-[1px] border-gray-500 flex flex-col max-[707px]:ml-[77px]">
+            <h1 class="text-[1.2rem] font-medium">Filters</h1>
+            
+            <div class="btns1 flex justify-evenly mb-[10px]">
+                <button class="btn_Brightness border-gray-600 border-[1px] rounded-sm bg-indigo-500 text-white  font-thin text-[0.9rem] w-[108px]">Brightness</button>
+                <button class="btn_Saturation border-gray-600 border-[1px] rounded-sm text-gray-600 font-thin text-[0.9rem] w-[108px]">Saturation</button>
+            </div>
+            <div class="btns2 flex justify-evenly">
+                <button class="btn_Inversion border-gray-600 border-[1px]  rounded-sm text-gray-600 font-thin text-[0.9rem] w-[108px]">Inversion</button>
+                <button class="btn_Grayscale border-gray-600 border-[1px] rounded-sm text-gray-600 font-thin text-[0.9rem] w-[108px]">Grayscale</button>
+            </div>
+            <div class="filterName flex justify-between my-[10px]">
+                <h1 class="filter_name text-gray-600">Brightness</h1>
+                <h1 class="range_number text-gray-600">0<span>%</span></h1>
+            </div>
+
+            <input type="range" max="200" value="100" class="range_Brightness rang mb-[20px] ">
+            <input type="range" max="200" value="100" class="range_Saturation rang mb-[20px] hidden">
+            <input type="range" max="100" value="0" class="range_Inversion rang mb-[20px] hidden">
+            <input type="range" max="100" value="0" class="range_Grayscale rang mb-[20px] hidden">
+
+            <h1 class="text-[1.2rem] font-medium">Rotate & Flip</h1>
+            <div class="rotate_flip flex justify-evenly my-[10px]">
+                <div class="btn1 p-[10px]  border-gray-600 w-[16px] h-[16px] bg-[url('icons/rotate-left.png')] bg-no-repeat bg-contain cursor-pointer"></div>
+                <div class="btn2 p-[10px]  border-gray-600 w-[16px] h-[16px] bg-[url('icons/rotate-right.png')] bg-no-repeat bg-cover cursor-pointer"></div>
+                <div class="btn3 p-[10px]  border-gray-600 w-[16px] h-[16px] bg-[url('icons/flip(1).png')] bg-no-repeat bg-cover cursor-pointer"></div>
+                <div class="btn4 p-[10px]  border-gray-600 w-[16px] h-[16px] bg-[url('icons/flip-(2).png')] bg-no-repeat bg-cover cursor-pointer"></div>
+            </div>
+        </div>
+
+        <div class="image  absolute top-[51px] left-[48%] w-[350px] h-[251px] rounded-md bg-indigo-500 flex justify-center items-center overflow-x-hidden max-[707px]:left-[15%] max-[707px]:top-[60%]">
+            <input type="file" id="files" class="hidden file2">
+            <label for="files" class="bg-[url('/icons/download.png')] bg-no-repeat bg-cover w-[36px] h-[36px] block cursor-pointer"></label>
+        </div>
+        <footer class="flex justify-between pt-[10px] max-[707px]:w-full max-[707px]:justify-end">
+            <div class="reset cursor-pointer text-gray-600 rounded-sm border-[1px] py-[4px] px-[10px] border-gray-600 hover:bg-gray-600 hover:text-white c">RESET FILTER</div>
+            <div class="choose_save flex flex-row w-[300px] justify-evenly">
+                <input type="file" id="files" class="hidden file">
+                <label for="files" class=" border-gray-600 bg-gray-600 text-white flex justify-center items-center rounded-sm cursor-pointer w-[131px] h-[34px]">CHANGE IMAGE</label>
+                <div class="save bg-indigo-500 text-white hover:bg-[#6365f1af] rounded-sm border-[1px] py-[4px] px-[10px] cursor-pointer mr-[42px]">SAVE IMAGE</div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="index.js"></script>
+</body>
+</html>
